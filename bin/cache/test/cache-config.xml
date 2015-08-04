@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+<!-- 
+
+class
+	The custom class implementing com.myjava.cache.VirtualMemCache, which will be used for item loading
+	on cache miss. Required
+	
+name
+	A named identifier for loading the cache class. Required
+	
+maxEntriesOnHeap
+	The maximum number of items to be present in the cache. Adding anymore item will 
+	remove the item based on a given eviction strategy. If the item is not expired based on 'timeToLiveSecs',
+	it is put into an off-heap location (overflow). Default 1024
+	
+timeToLiveSecs
+	The maximum number of seconds an element can exist in the cache regardless of use. 
+	The element expires at this limit and will no longer be returned from the cache. 
+	The default value is 0, which means no TTL eviction takes place (infinite lifetime).
+	
+timeToIdleSecs
+	The maximum number of seconds an element can exist in the cache without being accessed. 
+	The element expires at this limit and will no longer be returned from the cache. 
+	The default value is 0, which means no TTI eviction takes place (infinite lifetime).	
+	
+useExpiryTimer
+	Whether to use an expiration checker thread to remove expired items [true/false]. Default false.
+	Expiration does not follow any eviction strategy. If an item is expired based on 'timeToLiveSecs', 
+	it is removed from cache; if an item is idled based on 'timeToIdleSecs', it is put into an off-heap location (overflow)
+	
+expiryTimerIntervalSecs
+	If expiration checker thread is used, the interval after which each run will happen. Default 3600.
+	
+evictionStrategy
+	Cache element eviction strategy: LRU,LFU,FIFO,LIFO. Default LRU
+	
+serializer
+	Since we are using offheap memory storage, there is a cost associated with serialization/deserialization. 
+	For better performance, custom serialization scheme can be designed efficiently if we know the 
+	target object structure. Need to implement com.offheap.cache.util.ISerializer. 
+	Default using Kryo library (dependency)
+
+ -->
+ 
+	<cache 
+		class="ext.test.SomeCache" 
+		name="somecache"
+		maxEntriesOnHeap="2" 
+		useExpiryTimer="false"
+		expiryTimerIntervalSecs="1"
+		timeToLiveSecs="1"
+	/>
+	
+		
+</config>
