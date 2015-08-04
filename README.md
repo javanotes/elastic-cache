@@ -5,7 +5,7 @@ Addition of new items entails selection of another item for eviction, if max siz
 The various parameters for cache configuration are as follows:<p>
 <p><li>
 <b>class</b>
-	The custom class implementing com.myjava.cache.VirtualMemCache, which will be used for item loading
+	The custom class implementing esutdal.javanotes.cache.VirtualMemCache, which will be used for item loading
 	on cache miss. Required
 <p><li>	
 <b>name</b>
