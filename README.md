@@ -2,7 +2,7 @@
 Implementation of a caching solution which overflows non-expired evicted items to an off-heap location.
 Addition of new items entails selection of another item for eviction, if max size of cache is reached. Evicted item (selected based on eviction strategy), if not expired, overflow to off-heap memory. An idle detection facility is also provided, which if enabled, would schedule a periodic eviction of ALL (heap/off-heap) expired items and overflow of ALL idled items to off-heap area. 
 
-The various parameters for cache configuration is as follows:<p>
+The various parameters for cache configuration are as follows:<p>
 <p><li>
 <b>class</b>
 	The custom class implementing com.myjava.cache.VirtualMemCache, which will be used for item loading
